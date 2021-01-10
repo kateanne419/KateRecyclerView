@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.item_name.view.*
 abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() {
 
     @EpoxyAttribute
-    lateinit var name: String
+    lateinit var title: String
 
     @EpoxyAttribute
-    lateinit var info: String
+    lateinit var body: String
 
     @EpoxyAttribute
     var ranking = 0
@@ -32,19 +32,27 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
     @EpoxyAttribute
     var color = 0
 
+    @EpoxyAttribute
+    var userId = 0
+
+    @EpoxyAttribute
+    var postId = 0
+
     class ViewHolder : BaseEpoxyHolder() {
-        lateinit var textName: TextView
-        lateinit var textInfo: TextView
-        lateinit var textRanking: TextView
+        lateinit var textTitle: TextView
+        lateinit var textBody: TextView
+        lateinit var textUserId: TextView
+        lateinit var textPostId: TextView
         lateinit var imageProfile: ImageView
         lateinit var cardBackground: ConstraintLayout
 
         override fun bindView(itemView: View) {
             super.bindView(itemView)
             itemView.let {
-                textName = it.text_name
-                textInfo = it.text_info
-                textRanking = it.ranking
+                textTitle = it.text_title
+                textBody = it.text_body
+                textUserId = it.user_id
+                textPostId = it.post_id
                 imageProfile = it.profile_image
                 cardBackground = it.card_item
             }
@@ -53,9 +61,10 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
 
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
-        holder.textName.text = name
-        holder.textInfo.text = info
-        holder.textRanking.text = "" + ranking
+        holder.textTitle.text = title
+        holder.textBody.text = body
+        holder.textUserId.text = "" + userId
+        holder.textPostId.text = "" + postId
         holder.imageProfile.setImageResource(photo)
         holder.cardBackground.setBackgroundResource(color)
     }

@@ -1,71 +1,73 @@
 package com.example.katerecyclerview
 
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
     private lateinit var nameController: NameController
-    private lateinit var toDoList: List<ToDo>
-
+    private val scope = MainScope()
 
     override fun start() {
-        //progressBar.visibility = GONE
         initController()
-        runBlocking {
-            toDoList = getToDo()
+        scope.launch {
+            try {
+                loadData()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Exception Occurred: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
-        addItems(toDoList)
-
     }
 
     private fun initController() {
-
         nameController = NameController()
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setControllerAndBuildModels(nameController)
     }
 
-    private fun addItems(toDoList: List<ToDo>) {
-        var listofNames = listOf(toDoList.get(0).name, toDoList.get(1).name, toDoList.get(2).name, toDoList.get(3).name)
-        var listofToDo = listOf(toDoList.get(0).description, toDoList.get(1).description, toDoList.get(2).description, toDoList.get(3).description)
+    private fun addItems(postList: List<Posts>) {
+        var listOfTitles = mutableListOf<String>()
+        var listOfBodies = mutableListOf<String>()
+        var listOfUserIds = mutableListOf<Int>()
+        var listOfPostIds = mutableListOf<Int>()
+
+        for (post in postList){
+            listOfTitles.add(post.title)
+            listOfBodies.add(post.body)
+            listOfUserIds.add(post.userId)
+            listOfPostIds.add(post.id)
+        }
+
+        Log.v("list of titles", listOfTitles.toString())
+        Log.v("list of bodies", listOfBodies.toString())
+
         var listOfPhotos = listOf(R.drawable.profile_1, R.drawable.profile_2, R.drawable.profile_3, R.drawable.profile_5, R.drawable.profile_4 )
         var listOfColors = listOf(R.color.blue, R.color.yellow, R.color.orange, R.color.red, R.color.blue)
 
-        nameController.setNames(listofNames, listofToDo,  listOfPhotos, listOfColors)
+        nameController.setNames(listOfTitles, listOfBodies, listOfUserIds, listOfPostIds, listOfPhotos, listOfColors)
     }
 
 
-   private suspend fun getToDo(): List<ToDo> {
-       delay(5000L)
-        var todo = ToDo(
-                "Karen",
-                "Talk to the Manager"
-        )
-
-        var todo2 = ToDo(
-                "Mike",
-                "Buy Groceries"
-        )
-
-        var todo3 = ToDo(
-                "John",
-                "Do Laundry"
-        )
-
-           var todo4 = ToDo(
-               "Jim",
-               "Read a Book"
-           )
-       return listOf(todo, todo2, todo3, todo4)
+    private suspend fun loadData() {
+        val post = withContext(Dispatchers.IO){ getPost() }
+        addItems(post)
     }
 
-    data class ToDo(
-            var name: String,
-            var description: String
-    )
+    private suspend fun getPost(): List<Posts>{
+        val response = ApiClient.client.getPosts()
+
+        Log.v("this is the response", response.toString())
+
+        if (response != null) {
+            return response
+        } else {
+            throw Exception(response[0].title)
+        }
+    }
 }
