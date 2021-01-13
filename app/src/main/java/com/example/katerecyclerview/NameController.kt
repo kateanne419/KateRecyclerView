@@ -1,28 +1,23 @@
 package com.example.katerecyclerview
 
-import android.graphics.Color.red
-import android.graphics.drawable.Drawable
 import com.airbnb.epoxy.EpoxyController
-import kotlinx.android.synthetic.main.item_name.view.*
-import kotlinx.coroutines.delay
 
 class NameController : EpoxyController() {
-
-    private var titles : List<String>? = null
-    private var bodies : List<String>? = null
-    private var photos : List<Int>? = null
-    private var colors : List<Int>? = null
-    private var userIds : List<Int>? = null
-    private var postIds : List<Int>? = null
+    var listOfTitles = mutableListOf<String>()
+    var listOfBodies = mutableListOf<String>()
+    var listOfUserIds = mutableListOf<Int>()
+    var listOfPostIds = mutableListOf<Int>()
+    var listOfPhotos = listOf(R.drawable.profile_1, R.drawable.profile_2, R.drawable.profile_3, R.drawable.profile_5, R.drawable.profile_4 )
+    var listOfColors = listOf(R.color.blue, R.color.yellow, R.color.orange, R.color.red, R.color.blue)
 
     override fun buildModels() {
-        titles?.let {
+        listOfTitles?.let {
             it.forEachIndexed { index, title ->
-                bodies?.get(index)?.let { body ->
-                    photos?.random()?.let { photo ->
-                        colors?.random()?.let { color ->
-                            postIds?.get(index)?.let { postId ->
-                                userIds?.get(index)?.let {userId ->
+                listOfBodies?.get(index)?.let { body ->
+                    listOfPhotos?.random()?.let { photo ->
+                        listOfColors?.random()?.let { color ->
+                            listOfPostIds?.get(index)?.let { postId ->
+                                listOfUserIds?.get(index)?.let {userId ->
                                     NameItemModel_()
                                             .id(index)
                                             .title(title)
@@ -41,15 +36,16 @@ class NameController : EpoxyController() {
         }
     }
 
-    fun setNames(title : List<String>, body : List<String>, userId : List<Int>, postId : List<Int>, photo : List<Int>, color : List<Int>) {
-        titles = title
-        bodies = body
-        userIds = userId
-        postIds = postId
-        photos = photo
-        colors = color
+    fun setNames(posts : List<Posts>) {
+        for (post in posts){
+            listOfTitles.add(post.title)
+            listOfBodies.add(post.body)
+            listOfUserIds.add(post.userId)
+            listOfPostIds.add(post.id)
+        }
         requestModelBuild()
     }
+
 
 
 }

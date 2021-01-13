@@ -1,17 +1,15 @@
 package com.example.katerecyclerview
 
-import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_name.view.*
 
 @EpoxyModelClass(layout = R.layout.item_name)
@@ -57,7 +55,10 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
                 cardBackground = it.card_item
             }
         }
+
     }
+
+
 
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
