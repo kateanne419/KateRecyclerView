@@ -8,8 +8,10 @@ interface ApiService {
     @GET("/posts")
     suspend fun getPosts(): List<Posts>
 
-//    @GET("/posts/{id}")
-//    suspend fun getSinglePost(
-//           @Path(Int id)
-//    ): Response<SinglePost>
+    @GET("/posts/{id}")
+    suspend fun getSinglePost(
+            @Path("id") id: Int
+    ): Posts
+
+
 }

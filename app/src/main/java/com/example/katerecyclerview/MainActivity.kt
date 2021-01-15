@@ -19,6 +19,16 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         viewModel.data.observe(this){
             nameController.setNames(it)
         }
+
+
+        get_post.setOnClickListener {
+            val id = single_post_id.text.toString()
+            viewModel.loadDataById(Integer.parseInt(id))
+            viewModel.post.observe(this){
+                display_post.text = it.toString();
+            }
+            //doesnt have exception handling
+        }
     }
 
     fun initController() {
