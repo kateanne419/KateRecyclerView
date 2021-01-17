@@ -36,7 +36,11 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
     @EpoxyAttribute
     var postId = 0
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var clickListener: View.OnClickListener? = null
+
     class ViewHolder : BaseEpoxyHolder() {
+        lateinit var cardView: View
         lateinit var textTitle: TextView
         lateinit var textBody: TextView
         lateinit var textUserId: TextView
@@ -47,6 +51,7 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
         override fun bindView(itemView: View) {
             super.bindView(itemView)
             itemView.let {
+                cardView = it.card
                 textTitle = it.text_title
                 textBody = it.text_body
                 textUserId = it.user_id
@@ -58,7 +63,10 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
 
     }
 
-
+    override fun unbind(holder: ViewHolder) {
+        super.unbind(holder)
+        holder.cardView.setOnClickListener(null)
+    }
 
     override fun bind(holder: ViewHolder) {
         super.bind(holder)
@@ -68,6 +76,7 @@ abstract class NameItemModel : EpoxyModelWithHolder<NameItemModel.ViewHolder>() 
         holder.textPostId.text = "" + postId
         holder.imageProfile.setImageResource(photo)
         holder.cardBackground.setBackgroundResource(color)
+        holder.cardView.setOnClickListener(clickListener)
     }
 
 

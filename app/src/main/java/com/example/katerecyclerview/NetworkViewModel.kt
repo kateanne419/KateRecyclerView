@@ -1,6 +1,7 @@
 package com.example.katerecyclerview
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +23,7 @@ class NetworkViewModel: ViewModel() {
     fun loadData(){
         viewModelScope.launch {
             _data.value = getPost()
+
         }
     }
 
@@ -33,15 +35,23 @@ class NetworkViewModel: ViewModel() {
 
     private suspend fun getPost(): List<Posts> = withContext(Dispatchers.IO){
         val response = ApiClient.client.getPosts()
+        val data = response.body()
 
-        if (response != null) {
-            return@withContext response
+        if (response.isSuccessful && data!=null) {
+            return@withContext data
         } else {
-            throw Exception(response[0].title)
+            throw Exception(response.code().toString())
         }
     }
 
-    suspend fun getPostById(id: Int): Posts {
-        return ApiClient.client.getSinglePost(id)
+    private suspend fun getPostById(id: Int): Posts {
+        val response = ApiClient.client.getSinglePost(id)
+        val data = response.body()
+
+        if (response.isSuccessful && data!=null) {
+            return data
+        } else {
+            throw Exception(response.code().toString())
+        }
     }
 }

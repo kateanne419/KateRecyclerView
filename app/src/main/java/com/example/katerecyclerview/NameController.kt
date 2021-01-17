@@ -1,8 +1,9 @@
 package com.example.katerecyclerview
 
+import android.view.View
 import com.airbnb.epoxy.EpoxyController
 
-class NameController : EpoxyController() {
+class NameController(private val listener: (View, Int) -> Unit) : EpoxyController() {
     var listOfTitles = mutableListOf<String>()
     var listOfBodies = mutableListOf<String>()
     var listOfUserIds = mutableListOf<Int>()
@@ -26,6 +27,9 @@ class NameController : EpoxyController() {
                                             .color(color)
                                             .postId(postId)
                                             .userId(userId)
+                                            .clickListener { model, _, view, _ ->
+                                                listener.invoke(view, model.postId())
+                                            }
                                             .addTo(this)
                                 }
                             }
