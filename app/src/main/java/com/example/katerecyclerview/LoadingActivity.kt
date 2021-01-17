@@ -7,7 +7,6 @@ import android.os.Handler
 
 class LoadingActivity : BaseActivity(R.layout.progress_bar) {
 
-
     override fun start() {
         Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
@@ -15,7 +14,5 @@ class LoadingActivity : BaseActivity(R.layout.progress_bar) {
         }, 1000)
 
     }
-
-
 
 }
