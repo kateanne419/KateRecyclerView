@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
-
     override fun start() {
 
     }

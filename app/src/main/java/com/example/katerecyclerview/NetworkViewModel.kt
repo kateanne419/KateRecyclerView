@@ -23,7 +23,6 @@ class NetworkViewModel: ViewModel() {
     fun loadData(){
         viewModelScope.launch {
             _data.value = getPost()
-
         }
     }
 

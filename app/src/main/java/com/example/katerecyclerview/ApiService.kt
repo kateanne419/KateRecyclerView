@@ -12,17 +12,9 @@ interface ApiService {
             @Path("id") id: Int
     ): Response<Posts>
 
-
-
-//    @GET("/posts")
-//    suspend fun getListOfPosts(): Response<List<Posts>>
-//
-//    @GET("/posts/{id}")
-//    suspend fun getPost(@Path("id") id: String): Response<Posts>
-//
 //    @POST("/posts")
 //    suspend fun createPost(@Body body: PostRequest): Response<Posts>
-//
+
 //    @PUT("/posts/{id}")
 //    suspend fun updatePost(@Path("id") id: String, @Body body: PostRequest): Response<Posts>
 }
