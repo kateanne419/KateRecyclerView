@@ -20,6 +20,10 @@ class NetworkViewModel: ViewModel() {
     val post: LiveData<Posts>
         get() = _post
 
+    private val _newPost = MutableLiveData<Posts>()
+    val newPost: LiveData<Posts>
+        get() = _newPost
+
     fun loadData(){
         viewModelScope.launch {
             _data.value = getPost()
@@ -29,6 +33,12 @@ class NetworkViewModel: ViewModel() {
     fun loadDataById(id: Int){
         viewModelScope.launch {
             _post.value = getPostById(id)
+        }
+    }
+
+    fun pushData(post: Posts){
+        viewModelScope.launch{
+            _newPost.value = pushPost(post)
         }
     }
 
@@ -52,5 +62,17 @@ class NetworkViewModel: ViewModel() {
         } else {
             throw Exception(response.code().toString())
         }
+    }
+
+    private suspend fun pushPost(post: Posts): Posts {
+        val response = ApiClient.client.createPost(post)
+        val data = response.body()
+
+        if (response.isSuccessful && data!=null) {
+            return data
+        } else {
+            throw Exception(response.code().toString())
+        }
+
     }
 }

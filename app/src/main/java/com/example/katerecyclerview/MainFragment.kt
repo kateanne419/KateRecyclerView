@@ -15,8 +15,8 @@ class MainFragment : Fragment() {
     lateinit var nameController: NameController
     private val viewModel: NetworkViewModel by viewModels()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initController()
         try {
             viewModel.loadData()
@@ -32,7 +32,14 @@ class MainFragment : Fragment() {
             ).show()
         }
 
+        //create new button for creating posts, include edittext
+        create_post.setOnClickListener{
+            val action = MainFragmentDirections.actionMainFragmentToCreatePostFragment()
+            findNavController().navigate(action)
+        }
+
     }
+
 
     fun initController() {
         val clickListener: (View, Int) -> Unit = { view, id ->
