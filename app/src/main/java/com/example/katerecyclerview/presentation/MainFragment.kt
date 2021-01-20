@@ -41,8 +41,8 @@ class MainFragment : Fragment() {
         }
 
         update_post.setOnClickListener{
-//            val action = MainFragmentDirections.actionMainFragmentToUpdatePostFragment()
-//            findNavController().navigate(action)
+            val action = MainFragmentDirections.actionMainFragmentToUpdatePostFragment()
+            findNavController().navigate(action)
         }
 
     }

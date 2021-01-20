@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.example.katerecyclerview.R
-import kotlinx.android.synthetic.main.fragment_post.*
 
 
 class PostFragment : Fragment() {
@@ -21,8 +20,8 @@ class PostFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_post, container, false)
 
-        display_title.text = args.title
-        display_body.text = args.body
+        view.findViewById<TextView>(R.id.display_title).text = args.title
+        view.findViewById<TextView>(R.id.display_body).text = args.body
 
         return view
     }
