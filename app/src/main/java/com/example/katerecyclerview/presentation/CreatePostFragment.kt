@@ -1,4 +1,4 @@
-package com.example.katerecyclerview
+package com.example.katerecyclerview.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.example.katerecyclerview.R
+import com.example.katerecyclerview.domain.model.Post
 import kotlinx.android.synthetic.main.fragment_create_post.*
 
 
@@ -17,7 +19,8 @@ import kotlinx.android.synthetic.main.fragment_create_post.*
  */
 class CreatePostFragment : Fragment() {
 
-    private val viewModel: NetworkViewModel by viewModels()
+    private val viewModelFactory: MainViewModelFactory by lazy { MainViewModelFactory() }
+    private val viewModel: MainViewModel by viewModels() { viewModelFactory}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,7 +28,7 @@ class CreatePostFragment : Fragment() {
         submit_post.setOnClickListener{
             try {
 
-                val myPost = Posts(Integer.parseInt(edt_user_id.text.toString()) , Integer.parseInt(edt_post_id.text.toString()), edt_post_title.text.toString(), edt_post_body.text.toString()) //replace with values from edt, this is hardcoded
+                val myPost = Post(Integer.parseInt(edt_user_id.text.toString()) , Integer.parseInt(edt_post_id.text.toString()), edt_post_title.text.toString(), edt_post_body.text.toString()) //replace with values from edt, this is hardcoded
                 viewModel.pushData(myPost)
                 viewModel.newPost.observe(viewLifecycleOwner){
                     Toast.makeText(

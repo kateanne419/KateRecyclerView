@@ -2,6 +2,7 @@ package com.example.katerecyclerview
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
+import com.example.katerecyclerview.domain.model.Post
 
 class NameController(private val listener: (View, Int) -> Unit) : EpoxyController() {
     var listOfTitles = mutableListOf<String>()
@@ -40,7 +41,7 @@ class NameController(private val listener: (View, Int) -> Unit) : EpoxyControlle
         }
     }
 
-    fun setNames(posts : List<Posts>) {
+    fun setNames(posts : List<Post>) {
         for (post in posts){
             listOfTitles.add(post.title)
             listOfBodies.add(post.body)

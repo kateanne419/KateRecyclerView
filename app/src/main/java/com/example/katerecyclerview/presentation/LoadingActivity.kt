@@ -1,8 +1,8 @@
-package com.example.katerecyclerview
+package com.example.katerecyclerview.presentation
 
 import android.content.Intent
 import android.os.Handler
-
+import com.example.katerecyclerview.R
 
 
 class LoadingActivity : BaseActivity(R.layout.progress_bar) {

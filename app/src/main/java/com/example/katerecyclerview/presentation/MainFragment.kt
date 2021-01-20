@@ -1,4 +1,4 @@
-package com.example.katerecyclerview
+package com.example.katerecyclerview.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.katerecyclerview.NameController
+import com.example.katerecyclerview.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
     lateinit var nameController: NameController
-    private val viewModel: NetworkViewModel by viewModels()
+    private val viewModelFactory: MainViewModelFactory by lazy { MainViewModelFactory() }
+    private val viewModel: MainViewModel by viewModels() { viewModelFactory}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,10 +35,14 @@ class MainFragment : Fragment() {
             ).show()
         }
 
-        //create new button for creating posts, include edittext
         create_post.setOnClickListener{
             val action = MainFragmentDirections.actionMainFragmentToCreatePostFragment()
             findNavController().navigate(action)
+        }
+
+        update_post.setOnClickListener{
+//            val action = MainFragmentDirections.actionMainFragmentToUpdatePostFragment()
+//            findNavController().navigate(action)
         }
 
     }

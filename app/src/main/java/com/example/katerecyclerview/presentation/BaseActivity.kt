@@ -1,4 +1,4 @@
-package com.example.katerecyclerview
+package com.example.katerecyclerview.presentation
 
 import android.os.Bundle
 import android.view.View
