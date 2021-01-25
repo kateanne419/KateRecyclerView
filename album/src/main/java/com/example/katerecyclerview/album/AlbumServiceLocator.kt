@@ -1,11 +1,11 @@
 package com.example.katerecyclerview.album
 
-import com.example.katerecyclerview.album.data.AlbumRemoteSource
-import com.example.katerecyclerview.album.data.AlbumRepositoryImpl
-import com.example.katerecyclerview.album.data.AlbumService
-import com.example.katerecyclerview.album.domain.CreateAlbum
-import com.example.katerecyclerview.album.domain.GetAlbumById
-import com.example.katerecyclerview.album.domain.GetAlbums
+import com.example.katerecyclerview.album.data.remote.AlbumRemoteSource
+import com.example.katerecyclerview.album.data.repository.AlbumRepositoryImpl
+import com.example.katerecyclerview.album.data.remote.AlbumService
+import com.example.katerecyclerview.album.domain.interactor.CreateAlbum
+import com.example.katerecyclerview.album.domain.interactor.GetAlbumById
+import com.example.katerecyclerview.album.domain.interactor.GetAlbums
 import com.example.katerecyclerview.common.CommonServiceLocator
 import retrofit2.create
 

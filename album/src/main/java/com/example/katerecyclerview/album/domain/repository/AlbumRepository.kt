@@ -1,4 +1,6 @@
-package com.example.katerecyclerview.album.domain
+package com.example.katerecyclerview.album.domain.repository
+
+import com.example.katerecyclerview.album.domain.model.Album
 
 interface AlbumRepository {
     suspend fun getAlbums(): List<Album>

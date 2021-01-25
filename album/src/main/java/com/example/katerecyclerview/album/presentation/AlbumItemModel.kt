@@ -1,13 +1,13 @@
-package com.example.katerecyclerview.album
+package com.example.katerecyclerview.album.presentation
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.airbnb.epoxy.BaseEpoxyAdapter
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
+import com.example.katerecyclerview.album.R
 import com.example.katerecyclerview.common.BaseEpoxyHolder
 import kotlinx.android.synthetic.main.item_album.view.*
 

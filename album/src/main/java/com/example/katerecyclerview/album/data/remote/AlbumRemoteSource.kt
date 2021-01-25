@@ -1,6 +1,6 @@
-package com.example.katerecyclerview.album.data
+package com.example.katerecyclerview.album.data.remote
 
-import com.example.katerecyclerview.album.domain.Album
+import com.example.katerecyclerview.album.domain.model.Album
 
 class AlbumRemoteSource(val service: AlbumService) {
     suspend fun getAlbums(): List<Album> {
@@ -14,7 +14,7 @@ class AlbumRemoteSource(val service: AlbumService) {
         }
     }
 
-    suspend fun getAlbumById(id: Int): Album{
+    suspend fun getAlbumById(id: Int): Album {
         val response = service.getAlbumById(id)
         val data = response.body()
 

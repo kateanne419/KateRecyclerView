@@ -1,6 +1,6 @@
-package com.example.katerecyclerview.album.data
+package com.example.katerecyclerview.album.data.remote
 
-import com.example.katerecyclerview.album.domain.Album
+import com.example.katerecyclerview.album.domain.model.Album
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

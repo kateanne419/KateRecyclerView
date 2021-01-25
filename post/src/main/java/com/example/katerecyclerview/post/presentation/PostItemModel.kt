@@ -1,4 +1,4 @@
-package com.example.katerecyclerview.post
+package com.example.katerecyclerview.post.presentation
 
 import android.view.View
 import android.widget.ImageView
@@ -8,6 +8,7 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.katerecyclerview.common.BaseEpoxyHolder
+import com.example.katerecyclerview.post.R
 import kotlinx.android.synthetic.main.item_name.view.*
 
 @EpoxyModelClass

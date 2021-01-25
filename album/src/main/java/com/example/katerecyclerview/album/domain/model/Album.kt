@@ -1,4 +1,4 @@
-package com.example.katerecyclerview.album.domain
+package com.example.katerecyclerview.album.domain.model
 
 import kotlinx.serialization.Serializable
 

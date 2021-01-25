@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.katerecyclerview.album.AlbumController
 import com.example.katerecyclerview.album.R
 import kotlinx.android.synthetic.main.fragment_albums_main.*
 

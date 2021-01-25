@@ -1,7 +1,8 @@
-package com.example.katerecyclerview.album.data
+package com.example.katerecyclerview.album.data.repository
 
-import com.example.katerecyclerview.album.domain.Album
-import com.example.katerecyclerview.album.domain.AlbumRepository
+import com.example.katerecyclerview.album.data.remote.AlbumRemoteSource
+import com.example.katerecyclerview.album.domain.model.Album
+import com.example.katerecyclerview.album.domain.repository.AlbumRepository
 
 class AlbumRepositoryImpl(
     val remote: AlbumRemoteSource

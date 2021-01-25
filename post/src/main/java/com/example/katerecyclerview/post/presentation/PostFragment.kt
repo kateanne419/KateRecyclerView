@@ -1,4 +1,4 @@
-package com.example.katerecyclerview.presentation
+package com.example.katerecyclerview.post.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
-import com.example.katerecyclerview.R
-
+import com.example.katerecyclerview.post.R
 
 class PostFragment : Fragment() {
 

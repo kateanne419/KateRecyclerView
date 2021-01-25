@@ -1,15 +1,29 @@
-package com.example.katerecyclerview.album
+package com.example.katerecyclerview.album.presentation
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
-import com.example.katerecyclerview.album.domain.Album
+import com.example.katerecyclerview.album.AlbumItemModel_
+import com.example.katerecyclerview.album.R
+import com.example.katerecyclerview.album.domain.model.Album
 
 class AlbumController(private val listener: (View, Int) -> Unit): EpoxyController() {
     var listOfTitles = mutableListOf<String>()
     var listOfUserIds = mutableListOf<Int>()
     var listOfAlbumIds = mutableListOf<Int>()
-    var listOfPhotos = listOf(R.drawable.profile_1, R.drawable.profile_2, R.drawable.profile_3, R.drawable.profile_5, R.drawable.profile_4 )
-    var listOfColors = listOf(R.color.blue, R.color.yellow, R.color.orange, R.color.red, R.color.blue)
+    var listOfPhotos = listOf(
+        R.drawable.profile_1,
+        R.drawable.profile_2,
+        R.drawable.profile_3,
+        R.drawable.profile_5,
+        R.drawable.profile_4
+    )
+    var listOfColors = listOf(
+        R.color.blue,
+        R.color.yellow,
+        R.color.orange,
+        R.color.red,
+        R.color.blue
+    )
 
     override fun buildModels() {
         listOfTitles?.let{

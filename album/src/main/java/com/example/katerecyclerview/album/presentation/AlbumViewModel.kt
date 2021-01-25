@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.katerecyclerview.album.AlbumServiceLocator
-import com.example.katerecyclerview.album.domain.Album
-import com.example.katerecyclerview.album.domain.CreateAlbum
-import com.example.katerecyclerview.album.domain.GetAlbumById
-import com.example.katerecyclerview.album.domain.GetAlbums
+import com.example.katerecyclerview.album.domain.model.Album
+import com.example.katerecyclerview.album.domain.interactor.CreateAlbum
+import com.example.katerecyclerview.album.domain.interactor.GetAlbumById
+import com.example.katerecyclerview.album.domain.interactor.GetAlbums
 import kotlinx.coroutines.launch
 
 class AlbumViewModel(

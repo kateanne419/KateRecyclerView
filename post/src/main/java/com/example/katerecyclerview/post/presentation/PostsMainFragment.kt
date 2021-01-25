@@ -1,4 +1,4 @@
-package com.example.katerecyclerview.presentation
+package com.example.katerecyclerview.post.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,14 +9,13 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.katerecyclerview.NameController
-import com.example.katerecyclerview.R
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.example.katerecyclerview.post.R
+import kotlinx.android.synthetic.main.fragment_posts_main.*
 
-class MainFragment : Fragment() {
-    lateinit var nameController: NameController
-    private val viewModelFactory: MainViewModelFactory by lazy { MainViewModelFactory() }
-    private val viewModel: MainViewModel by viewModels() { viewModelFactory}
+class PostsMainFragment : Fragment() {
+    lateinit var postController: PostController
+    private val viewModelFactory: PostViewModelFactory by lazy { PostViewModelFactory() }
+    private val viewModel: PostViewModel by viewModels() { viewModelFactory}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,23 +24,23 @@ class MainFragment : Fragment() {
             viewModel.loadData()
             viewModel.data.observe(viewLifecycleOwner){
                 //display all posts in recyclerview
-                nameController.setNames(it)
+                postController.setNames(it)
             }
         } catch (e: Exception) {
             Toast.makeText(
-                    this.requireActivity(),
-                    "Exception Occurred: ${e.message}",
-                    Toast.LENGTH_SHORT
+                this.requireActivity(),
+                "Exception Occurred: ${e.message}",
+                Toast.LENGTH_SHORT
             ).show()
         }
 
         create_post.setOnClickListener{
-            val action = MainFragmentDirections.actionMainFragmentToCreatePostFragment()
+            val action = PostsMainFragmentDirections.actionMainFragmentToCreatePostFragment()
             findNavController().navigate(action)
         }
 
         update_post.setOnClickListener{
-            val action = MainFragmentDirections.actionMainFragmentToUpdatePostFragment()
+            val action = PostsMainFragmentDirections.actionMainFragmentToUpdatePostFragment()
             findNavController().navigate(action)
         }
 
@@ -55,21 +54,21 @@ class MainFragment : Fragment() {
                 //pass post title and body to next fragment for display
                 val title = it.title
                 val body = it.body
-                val action = MainFragmentDirections.actionMainFragmentToPostFragment(title, body)
+                val action = PostsMainFragmentDirections.actionMainFragmentToPostFragment(title, body)
                 findNavController().navigate(action)
             }
         }
 
-        nameController = NameController(clickListener)
+        postController = PostController(clickListener)
         recycler_view.layoutManager = LinearLayoutManager(this.requireActivity())
-        recycler_view.setControllerAndBuildModels(nameController)
+        recycler_view.setControllerAndBuildModels(postController)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_posts_main, container, false)
     }
 
 

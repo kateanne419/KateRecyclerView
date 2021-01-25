@@ -1,7 +1,9 @@
-package com.example.katerecyclerview.post
+package com.example.katerecyclerview.post.presentation
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
+import com.example.katerecyclerview.post.PostItemModel_
+import com.example.katerecyclerview.post.R
 import com.example.katerecyclerview.post.domain.model.Post
 
 class PostController(private val listener: (View, Int) -> Unit) : EpoxyController() {
@@ -9,8 +11,20 @@ class PostController(private val listener: (View, Int) -> Unit) : EpoxyControlle
     var listOfBodies = mutableListOf<String>()
     var listOfUserIds = mutableListOf<Int>()
     var listOfPostIds = mutableListOf<Int>()
-    var listOfPhotos = listOf(R.drawable.profile_1, R.drawable.profile_2, R.drawable.profile_3, R.drawable.profile_5, R.drawable.profile_4 )
-    var listOfColors = listOf(R.color.blue, R.color.yellow, R.color.orange, R.color.red, R.color.blue)
+    var listOfPhotos = listOf(
+        R.drawable.profile_1,
+        R.drawable.profile_2,
+        R.drawable.profile_3,
+        R.drawable.profile_5,
+        R.drawable.profile_4
+    )
+    var listOfColors = listOf(
+        R.color.blue,
+        R.color.yellow,
+        R.color.orange,
+        R.color.red,
+        R.color.blue
+    )
 
     override fun buildModels() {
         listOfTitles?.let {
