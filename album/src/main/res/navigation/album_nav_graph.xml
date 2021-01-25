@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/album_nav_graph"
+    app:startDestination="@id/albumsMainFragment">
+
+
+    <fragment
+        android:id="@+id/albumsMainFragment"
+        android:name="com.example.katerecyclerview.album.presentation.AlbumsMainFragment"
+        android:label="fragment_albums_main"
+        tools:layout="@layout/fragment_albums_main" >
+        <action
+            android:id="@+id/action_albumsMainFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_albumsMainFragment_to_createAlbumFragment"
+            app:destination="@id/createAlbumFragment" />
+        <action
+            android:id="@+id/action_albumsMainFragment_to_updateAlbumFragment"
+            app:destination="@id/updateAlbumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.katerecyclerview.album.presentation.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="title" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAlbumFragment"
+        android:name="com.example.katerecyclerview.album.presentation.CreateAlbumFragment"
+        android:label="fragment_create_album"
+        tools:layout="@layout/fragment_create_album" />
+    <fragment
+        android:id="@+id/updateAlbumFragment"
+        android:name="com.example.katerecyclerview.album.presentation.UpdateAlbumFragment"
+        android:label="fragment_update_album"
+        tools:layout="@layout/fragment_update_album" />
+</navigation>

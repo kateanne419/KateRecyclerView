@@ -1,2 +1,5 @@
+include ':album'
+include ':common'
+include ':post'
 include ':app'
 rootProject.name = "KateRecyclerView"

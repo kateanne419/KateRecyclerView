@@ -19,9 +19,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.LoadingActivity">
-
-        </activity>
     </application>
 
 </manifest>
