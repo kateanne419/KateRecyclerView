@@ -3,7 +3,7 @@
     package="com.example.katerecyclerview.album">
 
     <application>
-        <activity android:name=".presentation.AlbumActivity"></activity>
+        <activity android:name=".presentation.AlbumActivity" />
     </application>
 
 </manifest>

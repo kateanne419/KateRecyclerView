@@ -7,6 +7,9 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
 
 }
+def keystorePropFile = rootProject.file("keystore.properties")
+def keystoreProp = new Properties()
+keystoreProp.load(new FileInputStream(keystorePropFile))
 
 android {
     compileSdkVersion 30
@@ -22,10 +25,27 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile file('demoDebug.jks')
+            storePassword 'password'
+            keyAlias 'demoDebug'
+            keyPassword 'password'
+        }
+        release {
+            storeFile file(keystoreProp['storeFile'])
+            storePassword keystoreProp['storePassword']
+            keyAlias keystoreProp['keyAlias']
+            keyPassword keystoreProp['keyPassword']
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -34,6 +54,18 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    flavorDimensions "env"
+    productFlavors {
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+        }
+
+        prod {
+            dimension "env"
+            applicationIdSuffix ".prod"
+        }
     }
 }
 

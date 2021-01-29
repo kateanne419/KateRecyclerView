@@ -2,7 +2,7 @@ package com.example.katerecyclerview.post.presentation
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
-import com.example.katerecyclerview.post.PostItemModel_
+import com.example.katerecyclerview.post.presentation.PostItemModel_
 import com.example.katerecyclerview.post.R
 import com.example.katerecyclerview.post.domain.model.Post
 

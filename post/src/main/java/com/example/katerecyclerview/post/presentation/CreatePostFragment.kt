@@ -23,7 +23,10 @@ class CreatePostFragment : Fragment() {
         submit_post.setOnClickListener{
             try {
 
-                val myPost = Post(Integer.parseInt(edt_user_id.text.toString()) , Integer.parseInt(edt_post_id.text.toString()), edt_post_title.text.toString(), edt_post_body.text.toString()) //replace with values from edt, this is hardcoded
+                val myPost = Post(Integer.parseInt(edt_user_id.text.toString()),
+                        Integer.parseInt(edt_post_id.text.toString()),
+                        edt_post_title.text.toString(),
+                        edt_post_body.text.toString()) //replace with values from edt, this is hardcoded
                 viewModel.pushData(myPost)
                 viewModel.newPost.observe(viewLifecycleOwner){
                     Toast.makeText(

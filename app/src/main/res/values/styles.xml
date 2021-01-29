@@ -7,4 +7,8 @@
         <item name="android:textSize">10dp</item>
     </style>
 
+    <style name="generalnotitle">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

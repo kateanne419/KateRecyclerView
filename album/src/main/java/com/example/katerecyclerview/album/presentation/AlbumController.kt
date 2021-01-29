@@ -2,7 +2,7 @@ package com.example.katerecyclerview.album.presentation
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
-import com.example.katerecyclerview.album.AlbumItemModel_
+import com.example.katerecyclerview.album.presentation.AlbumItemModel_
 import com.example.katerecyclerview.album.R
 import com.example.katerecyclerview.album.domain.model.Album
 

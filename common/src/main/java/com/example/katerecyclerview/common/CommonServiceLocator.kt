@@ -21,7 +21,7 @@ object CommonServiceLocator {
     // Retrofit Instance
     private val contentType = "application/json".toMediaType()
     val service = Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl(BuildConfig.API_BASE_URL)
         .client(OkHttpClient())
         .addConverterFactory(Json.asConverterFactory(contentType))
         .build()
